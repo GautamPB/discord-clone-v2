@@ -1,7 +1,12 @@
+'use client'
+
 import ServerIcon from './ServerIcon'
 import { PlusIcon } from '@heroicons/react/24/solid'
+import { useSession, signOut } from 'next-auth/react'
 
 const ServerList = () => {
+    const { data: session } = useSession()
+
     const servers = [
         {
             imageURL:
@@ -33,9 +38,10 @@ const ServerList = () => {
             {/* user profile */}
             <div className="border-b-2 border-[#35363C] pb-3">
                 <img
-                    src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"
+                    src={session?.user?.image!}
                     alt=""
-                    className="hover:rounded-xl transition-all h-12 object-fit w-12 rounded-3xl cursor-pointer"
+                    className="hover:rounded-xl transition-all h-12 object-fit w-12 rounded-3xl cursor-pointer hover:opacity-50"
+                    onClick={() => signOut()}
                 />
             </div>
 
