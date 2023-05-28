@@ -3,6 +3,7 @@ import SessionProvider from '@/components/SessionProvider'
 import { getServerSession } from 'next-auth/next'
 import Login from '@/components/Login'
 import { authOptions } from '../pages/api/auth/[...nextauth]'
+import Sidebar from '@/components/Sidebar'
 
 export const metadata = {
     title: 'Discord Clone',
@@ -23,7 +24,10 @@ export default async function RootLayout({
                     {!session ? (
                         <Login />
                     ) : (
-                        <div className="flex h-screen">{children}</div>
+                        <div className="flex h-screen">
+                            <Sidebar />
+                            {children}
+                        </div>
                     )}
                 </SessionProvider>
             </body>
