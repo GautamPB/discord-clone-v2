@@ -43,8 +43,17 @@ const ServerList = () => {
             createdAt: serverTimestamp(),
         }
 
+        const generalChannel: channel = {
+            channelName: 'general',
+            createdAt: serverTimestamp(),
+        }
+
         await addDoc(collection(db, 'servers'), serverObj)
-            .then(() => {
+            .then(async (docRef) => {
+                await addDoc(
+                    collection(db, 'servers', docRef.id, 'channels'),
+                    generalChannel
+                )
                 setCreateServer(false)
             })
             .catch((err) => {

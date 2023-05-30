@@ -8,3 +8,8 @@ interface serverObj {
     serverPhoto: string
     createdAt: firestore.timestamp
 }
+
+interface channel {
+    channelName: string
+    createdAt: Firestore.timestamp
+}

@@ -1,4 +1,5 @@
 import { DocumentData } from 'firebase/firestore'
+import { useRouter } from 'next/dist/client/components/navigation'
 
 type Props = {
     serverId: string
@@ -6,10 +7,13 @@ type Props = {
 }
 
 const ServerIcon = ({ serverId, serverData }: Props) => {
-    console.log(serverId)
+    const router = useRouter()
 
     return (
-        <div className="flex relative">
+        <div
+            onClick={() => router.push(`/server/${serverId}`)}
+            className="flex relative"
+        >
             <img
                 src={serverData.serverPhoto}
                 alt=""

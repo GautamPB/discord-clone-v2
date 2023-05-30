@@ -2,6 +2,14 @@
 const nextConfig = {
     images: {
         domains: ['cdn.pixabay.com'],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: '**',
+                pathname: '**',
+                port: '',
+            },
+        ],
     },
 }
 
